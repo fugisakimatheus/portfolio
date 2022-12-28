@@ -34,7 +34,16 @@ const Logo = (props: LogoProps) => {
   const imageSize = sizesMap.get(size);
   const imageSrc = logosPathsMap.get(variant);
 
-  return <Image src={imageSrc} width={imageSize} height={imageSize} />;
+  return (
+    <Image
+      pointerEvents="none"
+      userSelect="none"
+      src={imageSrc}
+      width={imageSize}
+      height={imageSize}
+      alt="Matheus Fugisaki"
+    />
+  );
 };
 
 export default Logo;

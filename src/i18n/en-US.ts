@@ -3,6 +3,10 @@ export const header = {
   skills: "Skills",
   experience: "Experience",
   projects: "Projects",
+  translator: {
+    "pt-BR": "Portuguese Brazil",
+    en: "English",
+  },
 };
 
 export const about = {};
