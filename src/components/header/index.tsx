@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Flex,
   Box,
@@ -16,9 +16,11 @@ import {
 import Logo from "../logo";
 import { useTranslation } from "react-i18next";
 
+export type Sections = "about" | "skills" | "experience" | "projects";
+
 type Link = {
   title: string;
-  link: string;
+  link: Sections;
 };
 
 const links: Link[] = [
@@ -29,19 +31,20 @@ const links: Link[] = [
 ];
 
 type HeaderProps = {
-  selected: string;
-  scrollOffset: number;
-  onGoToSection: (section: string) => void;
+  selected: Sections;
+  onGoToSection: (section: Sections) => void;
 };
 
-const Header = ({ selected, scrollOffset, onGoToSection }: HeaderProps) => {
+const Header = ({ selected, onGoToSection }: HeaderProps) => {
   const { t, i18n } = useTranslation();
 
   const storedLanguage = localStorage.getItem("language") || "";
+
   const [currentLanguage, setCurrentLanguage] = useState(storedLanguage);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-  const isInitialScroll = scrollOffset <= 100;
+  const isInitialScroll = scrollPosition <= 100;
 
   const backgroundColor = isInitialScroll
     ? "transparent"
@@ -49,7 +52,7 @@ const Header = ({ selected, scrollOffset, onGoToSection }: HeaderProps) => {
 
   const optionBackgroundColor = utils.rgba(theme.colors.green[500], 0.06);
 
-  const handleSection = (section: string) => {
+  const handleSection = (section: Sections) => {
     onGoToSection(section);
   };
 
@@ -58,6 +61,18 @@ const Header = ({ selected, scrollOffset, onGoToSection }: HeaderProps) => {
     localStorage.setItem("language", language);
     setCurrentLanguage(language);
   };
+
+  const handleScroll = useCallback(() => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  }, [setScrollPosition]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const getButtonLinkStyles = (link?: string) => {
     const common = {
@@ -192,8 +207,9 @@ const Header = ({ selected, scrollOffset, onGoToSection }: HeaderProps) => {
           backgroundColor={backgroundColor}
           backdropFilter={isInitialScroll ? "none" : "blur(5px)"}
           padding="1rem"
+          paddingBottom="2rem"
           width="100%"
-          marginTop="55px"
+          marginTop="56px"
           transition="background ease-in-out 240ms"
           position="fixed"
         >
