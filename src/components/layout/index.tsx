@@ -1,14 +1,12 @@
-import { Box, Flex } from "@fugisaki/design-system";
+import { Box, Flex, Text } from "@fugisaki/design-system";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Header, { Sections } from "../header";
-import aos from "aos";
 
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import LinksBar from "../links-bar";
+import ProfileImage from "../profile-image";
 
 const Layout = () => {
-  aos.init({ duration: 2000 });
-
   const [selectedSection, setSelectedSection] = useState<Sections>(
     "" as Sections
   );
@@ -91,24 +89,88 @@ const Layout = () => {
 
   const commonProps = {
     height: "100vh",
+    width: "100%",
     align: "center",
     justify: "center",
-    fontSize: "2.6rem",
-    color: "white",
   };
 
   return (
     <Box minHeight="100vh" width="100%" position="relative" overflowY="auto">
       <Header selected={selectedSection} onGoToSection={handleGoToSection} />
       <LinksBar />
-      <Box paddingTop="56px" height="100%">
+      <Box paddingTop="56px" height="100%" width="100%">
         <Flex
           ref={aboutRef}
           as="section"
           {...commonProps}
           height="calc(100vh - 56px)"
         >
-          Sobre
+          <Flex
+            marginTop={{ base: "2.5rem", sm: "2.5rem", md: "0px" }}
+            width="100%"
+            maxWidth="1120px"
+            height="100%"
+            align="center"
+            justify={{
+              base: "flex-end",
+              sm: "flex-end",
+              md: "space-between",
+            }}
+            direction={{
+              base: "column-reverse",
+              sm: "column-reverse",
+              md: "row",
+            }}
+            marginX="2rem"
+          >
+            <Flex
+              direction="column"
+              padding={{ base: "1rem", sm: "1rem", md: "0px" }}
+              align={{ base: "center", sm: "center", md: "flex-start" }}
+              marginTop={{ base: "1rem", sm: "1rem", md: "0px" }}
+            >
+              <Text
+                color="green.400"
+                fontWeight="bold"
+                fontSize={{
+                  base: "2rem",
+                  sm: "2rem",
+                  md: "2.5rem",
+                  lg: "3rem",
+                }}
+                lineHeight={{
+                  base: "2rem",
+                  sm: "2rem",
+                  md: "2.5rem",
+                  lg: "3rem",
+                }}
+                marginRight="0.3rem"
+              >
+                Matheus Fugisaki
+              </Text>
+              <Text
+                color="gray.200"
+                marginTop={{ base: "0.5rem", sm: "0.5rem", md: "0px" }}
+                fontWeight="bold"
+                fontSize="1.25rem"
+              >
+                Desenvolvedor Front-end
+              </Text>
+              <Text
+                color="gray.400"
+                marginTop="0.5rem"
+                textAlign={{ base: "center", sm: "center", md: "left" }}
+              >
+                kjashdskj askjdakdjh askjd haskjas as ja dhas akjkash ka ahska
+                sjdkahs dkjashaska jashdah kjashdkj askdj ah sjdka hsdkjashaska
+                jashdah kjashdkj askdj ah sjdkahsdkjashaska jashdah kjashdkj
+                askdj ah sjdkahsd kjashaska jashdah kjashdkj askdj ah
+                sjdkahsdkjashaska jashdah kjashdkj askdj ah sjdkahs dkjashaska
+                jashdah kjashdkj
+              </Text>
+            </Flex>
+            <ProfileImage />
+          </Flex>
         </Flex>
 
         <Flex ref={skillsRef} as="section" {...commonProps}>

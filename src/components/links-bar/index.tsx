@@ -27,8 +27,8 @@ const LinksBar = () => {
 
   return (
     <Flex
-      paddingY="1rem"
-      paddingX="0.5rem"
+      paddingY={{ base: "0.7rem", sm: "0.7rem", md: "1rem" }}
+      paddingX={{ base: "0.5rem", sm: "0.5rem", md: "0.8rem" }}
       position="fixed"
       color="white"
       align="center"
@@ -39,11 +39,15 @@ const LinksBar = () => {
           key={label}
           aria-label={label}
           variant="link"
-          color="gray.400"
-          size="md"
+          color="gray.300"
+          size="xs"
+          marginRight={{ base: "0.4rem", sm: "0.4rem", md: "0.7rem" }}
+          padding="0.2rem"
           icon={<FaIcon name={icon} size="md" />}
+          bgColor="gray.800"
           _hover={{
-            color: "blue.400",
+            color: label === "github" ? "green.600" : "blue.500",
+            bgColor: "white",
           }}
           _active={{
             opacity: 0.7,

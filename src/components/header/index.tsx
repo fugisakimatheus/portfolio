@@ -11,7 +11,7 @@ import {
   MenuItem,
   MdIcon,
   IconButton,
-  Fade,
+  ScaleFade,
 } from "@fugisaki/design-system";
 import Logo from "../logo";
 import { useTranslation } from "react-i18next";
@@ -50,7 +50,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
     ? "transparent"
     : utils.rgba(theme.colors.gray[900], 0.9);
 
-  const optionBackgroundColor = utils.rgba(theme.colors.green[500], 0.06);
+  const optionBackgroundColor = utils.rgba(theme.colors.green[400], 0.06);
 
   const handleSection = (section: Sections) => {
     onGoToSection(section);
@@ -85,14 +85,17 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
       borderBottom: "1px solid transparent",
       borderRadius: 0,
       size: "sm",
-      _hover: { color: "green.200", borderBottom: "1px solid" },
-      _active: { color: "green.200", opacity: 0.86 },
+      _hover: {
+        color: "green.400",
+        borderBottom: "1px solid",
+      },
+      _active: { color: "green.400", opacity: 0.86 },
     };
 
     if (link && link === selected) {
       return {
         ...common,
-        color: "green.200",
+        color: "green.400",
         borderBottom: "1px solid",
       };
     }
@@ -102,7 +105,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
 
   const getMenuItemStyles = (selected: "pt-BR" | "en") => {
     return {
-      color: currentLanguage === selected ? "green.200" : "inherit",
+      color: currentLanguage === selected ? "green.400" : "inherit",
       fontWeight: currentLanguage === selected ? "bold" : "inherit",
       backgroundColor:
         currentLanguage === selected ? optionBackgroundColor : "gray.800",
@@ -124,7 +127,8 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
         paddingY="0.5rem"
         paddingX="1rem"
         position="fixed"
-        transition="background ease-in-out 240ms"
+        transition="background ease-in-out 400ms"
+        zIndex={999999}
       >
         <Flex
           width="100%"
@@ -133,7 +137,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
           justify="space-between"
         >
           <Box>
-            <Logo size="md" variant="dark-with-background" />
+            <Logo size="md" variant="dark" />
           </Box>
 
           <Box>
@@ -202,7 +206,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
           </Box>
         </Flex>
       </Flex>
-      <Fade in={isOpenMenu} unmountOnExit>
+      <ScaleFade in={isOpenMenu} unmountOnExit>
         <Flex
           backgroundColor={backgroundColor}
           backdropFilter={isInitialScroll ? "none" : "blur(5px)"}
@@ -210,7 +214,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
           paddingBottom="2rem"
           width="100%"
           marginTop="56px"
-          transition="background ease-in-out 240ms"
+          transition="background ease-in-out 400ms"
           position="fixed"
         >
           <Flex width="100%" direction="column" align="center" justify="center">
@@ -261,7 +265,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
             ))}
           </Flex>
         </Flex>
-      </Fade>
+      </ScaleFade>
     </>
   );
 };

@@ -1,0 +1,33 @@
+.path {
+  fill: #48BB78;
+  stroke: #48BB78;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  animation: fill-color 3.2s 
+}
+
+@keyframes fill-color {
+  0% {
+    fill: none;
+  }
+
+  10% {
+    fill: rgba(72, 187, 120, 0.1);
+  }
+
+  20% {
+    fill: rgba(72, 187, 120, 0.3);
+  }
+
+  40% {
+    fill: rgba(72, 187, 120, 0.5);
+  }
+
+  70% {
+    fill: rgba(72, 187, 120, 0.9);
+  }
+
+  100% {
+    fill: #48BB78;
+  }
+}
