@@ -39,7 +39,7 @@ type HeaderProps = {
 const Header = ({ selected, onGoToSection }: HeaderProps) => {
   const { t, i18n } = useTranslation();
 
-  const storedLanguage = localStorage.getItem("language") || "";
+  const storedLanguage = localStorage.getItem("language") || "pt-BR";
 
   const [currentLanguage, setCurrentLanguage] = useState(storedLanguage);
   const [scrollPosition, setScrollPosition] = useState(0);
