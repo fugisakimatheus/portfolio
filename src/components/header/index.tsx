@@ -12,6 +12,7 @@ import {
   MdIcon,
   IconButton,
   ScaleFade,
+  useBreakpointValue,
 } from "@fugisaki/design-system";
 import Logo from "../logo";
 import { useTranslation } from "react-i18next";
@@ -43,10 +44,11 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
   const [currentLanguage, setCurrentLanguage] = useState(storedLanguage);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const isMobile = useBreakpointValue({ base: true, sm: true, md: false });
 
-  const isInitialScroll = scrollPosition <= 100;
+  const isHideHeaderColor = !isMobile && scrollPosition <= 100;
 
-  const backgroundColor = isInitialScroll
+  const backgroundColor = isHideHeaderColor
     ? "transparent"
     : utils.rgba(theme.colors.gray[900], 0.9);
 
@@ -122,7 +124,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
         backgroundColor={backgroundColor}
         width="100%"
         height="56px"
-        backdropFilter={isInitialScroll ? "none" : "blur(5px)"}
+        backdropFilter={isHideHeaderColor ? "none" : "blur(5px)"}
         justify="center"
         paddingY="0.5rem"
         paddingX="1rem"
@@ -136,9 +138,7 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
           align="center"
           justify="space-between"
         >
-          <Box>
-            <Logo size="md" variant="dark" />
-          </Box>
+          <Logo />
 
           <Box>
             <IconButton
@@ -209,13 +209,14 @@ const Header = ({ selected, onGoToSection }: HeaderProps) => {
       <ScaleFade in={isOpenMenu} unmountOnExit>
         <Flex
           backgroundColor={backgroundColor}
-          backdropFilter={isInitialScroll ? "none" : "blur(5px)"}
+          backdropFilter={isHideHeaderColor ? "none" : "blur(5px)"}
           padding="1rem"
           paddingBottom="2rem"
           width="100%"
           marginTop="56px"
           transition="background ease-in-out 400ms"
           position="fixed"
+          zIndex={999999}
         >
           <Flex width="100%" direction="column" align="center" justify="center">
             <Menu>

@@ -1,10 +1,11 @@
-import { Box, Flex, Text } from "@fugisaki/design-system";
+import { Box, Flex } from "@fugisaki/design-system";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Header, { Sections } from "../header";
 
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import LinksBar from "../links-bar";
-import ProfileImage from "../profile-image";
+import About from "./about";
+import Skills from "./skills";
 
 const Layout = () => {
   const [selectedSection, setSelectedSection] = useState<Sections>(
@@ -29,7 +30,7 @@ const Layout = () => {
       setSelectedSection(section);
 
       const refBySection = {
-        about: aboutRef.current,
+        about: { offsetTop: 0 },
         skills: skillsRef.current,
         experience: experienceRef.current,
         projects: projectsRef.current,
@@ -54,12 +55,15 @@ const Layout = () => {
       projects: projectsEntry?.isIntersecting,
     };
 
-    (Object.keys(intersectBySection) as Sections[]).forEach((key) => {
-      if (intersectBySection[key]) {
-        setSelectedSection(key);
-        return;
+    const sections = Object.keys(intersectBySection) as Sections[];
+
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      if (intersectBySection[section]) {
+        setSelectedSection(section);
+        break;
       }
-    });
+    }
   }, [
     aboutEntry?.isIntersecting,
     skillsEntry?.isIntersecting,
@@ -104,77 +108,13 @@ const Layout = () => {
           as="section"
           {...commonProps}
           height="calc(100vh - 56px)"
+          position="relative"
         >
-          <Flex
-            marginTop={{ base: "2.5rem", sm: "2.5rem", md: "0px" }}
-            width="100%"
-            maxWidth="1120px"
-            height="100%"
-            align="center"
-            justify={{
-              base: "flex-end",
-              sm: "flex-end",
-              md: "space-between",
-            }}
-            direction={{
-              base: "column-reverse",
-              sm: "column-reverse",
-              md: "row",
-            }}
-            marginX="2rem"
-          >
-            <Flex
-              direction="column"
-              padding={{ base: "1rem", sm: "1rem", md: "0px" }}
-              align={{ base: "center", sm: "center", md: "flex-start" }}
-              marginTop={{ base: "1rem", sm: "1rem", md: "0px" }}
-            >
-              <Text
-                color="green.400"
-                fontWeight="bold"
-                fontSize={{
-                  base: "2rem",
-                  sm: "2rem",
-                  md: "2.5rem",
-                  lg: "3rem",
-                }}
-                lineHeight={{
-                  base: "2rem",
-                  sm: "2rem",
-                  md: "2.5rem",
-                  lg: "3rem",
-                }}
-                marginRight="0.3rem"
-              >
-                Matheus Fugisaki
-              </Text>
-              <Text
-                color="gray.200"
-                marginTop={{ base: "0.5rem", sm: "0.5rem", md: "0px" }}
-                fontWeight="bold"
-                fontSize="1.25rem"
-              >
-                Desenvolvedor Front-end
-              </Text>
-              <Text
-                color="gray.400"
-                marginTop="0.5rem"
-                textAlign={{ base: "center", sm: "center", md: "left" }}
-              >
-                kjashdskj askjdakdjh askjd haskjas as ja dhas akjkash ka ahska
-                sjdkahs dkjashaska jashdah kjashdkj askdj ah sjdka hsdkjashaska
-                jashdah kjashdkj askdj ah sjdkahsdkjashaska jashdah kjashdkj
-                askdj ah sjdkahsd kjashaska jashdah kjashdkj askdj ah
-                sjdkahsdkjashaska jashdah kjashdkj askdj ah sjdkahs dkjashaska
-                jashdah kjashdkj
-              </Text>
-            </Flex>
-            <ProfileImage />
-          </Flex>
+          <About />
         </Flex>
 
         <Flex ref={skillsRef} as="section" {...commonProps}>
-          Habilidades
+          <Skills />
         </Flex>
 
         <Flex ref={experienceRef} as="section" {...commonProps}>

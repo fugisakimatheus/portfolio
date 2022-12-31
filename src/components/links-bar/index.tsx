@@ -33,6 +33,7 @@ const LinksBar = () => {
       color="white"
       align="center"
       bottom="0px"
+      zIndex={999999}
     >
       {links.map(({ icon, link, label }) => (
         <IconButton
@@ -46,7 +47,7 @@ const LinksBar = () => {
           icon={<FaIcon name={icon} size="md" />}
           bgColor="gray.800"
           _hover={{
-            color: label === "github" ? "green.600" : "blue.500",
+            color: label === "github" ? "black" : "blue.500",
             bgColor: "white",
           }}
           _active={{
