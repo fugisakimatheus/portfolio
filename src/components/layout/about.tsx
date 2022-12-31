@@ -54,15 +54,15 @@ const About = () => {
         </Text>
         <Text
           color="gray.300"
-          marginTop={{ base: "0.5rem", sm: "0.5rem", md: "0px" }}
+          marginTop={{ base: "0.4rem", sm: "0.4rem", md: "0.175rem" }}
           fontWeight="bold"
-          fontSize="1.2rem"
+          fontSize="1.1rem"
         >
           {t("about:role")}
         </Text>
         <Text
           color="gray.500"
-          marginTop="0.5rem"
+          marginTop="0.6rem"
           textAlign={{ base: "center", sm: "center", md: "left" }}
         >
           {t("about:description")}

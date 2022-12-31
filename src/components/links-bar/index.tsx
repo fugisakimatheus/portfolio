@@ -43,9 +43,10 @@ const LinksBar = () => {
           color="gray.300"
           size="xs"
           marginRight={{ base: "0.4rem", sm: "0.4rem", md: "0.7rem" }}
-          padding="0.2rem"
+          padding="0.26rem"
           icon={<FaIcon name={icon} size="md" />}
           bgColor="gray.800"
+          borderRadius="md"
           _hover={{
             color: label === "github" ? "black" : "blue.500",
             bgColor: "white",

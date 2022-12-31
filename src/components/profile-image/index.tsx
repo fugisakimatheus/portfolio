@@ -6,29 +6,29 @@ import animatedBackground from "../../lottie/circle.json";
 
 const ProfileImage = () => {
   const size = useBreakpointValue({
-    base: "500px",
-    sm: "500px",
-    md: "600px",
-    lg: "800px",
+    base: "380px",
+    sm: "380px",
+    md: "580px",
+    lg: "740px",
   });
 
   const top = useBreakpointValue({
-    base: "-80px",
-    sm: "-80px",
-    md: "-70px",
-    lg: "-115px",
+    base: "-50px",
+    sm: "-50px",
+    md: "-66px",
+    lg: "-84px",
   });
   const left = useBreakpointValue({
-    base: "-90px",
-    sm: "-90px",
-    md: "-115px",
-    lg: "-130px",
+    base: "-64px",
+    sm: "-64px",
+    md: "-108px",
+    lg: "-100px",
   });
 
   return (
     <Flex
-      width={{ base: "300px", sm: "300px", md: "420px", lg: "520px" }}
-      height={{ base: "300px", sm: "300px", md: "420px", lg: "520px" }}
+      width={{ base: "250px", sm: "250px", md: "420px", lg: "520px" }}
+      height={{ base: "250px", sm: "250px", md: "420px", lg: "520px" }}
       backgroundImage="url(/images/profile-background.svg)"
       backgroundSize="contain"
       backgroundRepeat="no-repeat"
@@ -41,7 +41,7 @@ const ProfileImage = () => {
         autoplay
         loop
         src={animatedBackground}
-        speed={0.5}
+        speed={0.4}
         style={{
           height: size,
           width: size,
@@ -57,8 +57,8 @@ const ProfileImage = () => {
         userSelect="none"
         src="/images/profile.png"
         borderRadius="9999"
-        width={{ base: "280px", sm: "280px", md: "350px", lg: "450px" }}
-        height={{ base: "280px", sm: "280px", md: "350px", lg: "450px" }}
+        width={{ base: "220px", sm: "220px", md: "350px", lg: "450px" }}
+        height={{ base: "220px", sm: "220px", md: "350px", lg: "450px" }}
         alt="Matheus Fugisaki"
       />
     </Flex>

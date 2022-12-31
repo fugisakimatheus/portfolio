@@ -35,3 +35,11 @@ export const skills = {
   docker: "Docker",
   figma: "Figma",
 };
+
+export const projects = {
+  title: "Projects",
+};
+
+export const experiences = {
+  title: "Experiences",
+};

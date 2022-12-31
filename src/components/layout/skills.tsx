@@ -5,6 +5,7 @@ import {
   SiIconNames,
   ColorsNames,
   SimpleGrid,
+  useBreakpointValue,
 } from "@fugisaki/design-system";
 import { Player } from "@lottiefiles/react-lottie-player";
 import React from "react";
@@ -125,6 +126,7 @@ const skills: Skill[] = [
 
 const Skills = () => {
   const { t } = useTranslation();
+  const size = useBreakpointValue({ base: "840px", sm: "840px", md: "100%" });
 
   const sortedSkills = skills.sort((a, b) => a.priority - b.priority);
 
@@ -154,8 +156,8 @@ const Skills = () => {
         src={animatedBackground}
         speed={0.25}
         style={{
-          height: "100%",
-          width: "100%",
+          height: size,
+          width: size,
           top: "0px",
           left: "0px",
           position: "absolute",

@@ -1,4 +1,4 @@
-import { Box, Flex } from "@fugisaki/design-system";
+import { Box, Flex, MdIcon, IconButton } from "@fugisaki/design-system";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Header, { Sections } from "../header";
 
@@ -6,6 +6,10 @@ import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import LinksBar from "../links-bar";
 import About from "./about";
 import Skills from "./skills";
+import Projects from "./projects";
+import { Player } from "@lottiefiles/react-lottie-player";
+import animatedBackground from "../../lottie/bubble-wave.json";
+import Experiences from "./experiences";
 
 const Layout = () => {
   const [selectedSection, setSelectedSection] = useState<Sections>(
@@ -99,7 +103,13 @@ const Layout = () => {
   };
 
   return (
-    <Box minHeight="100vh" width="100%" position="relative" overflowY="auto">
+    <Box
+      minHeight="100vh"
+      width="100%"
+      position="relative"
+      overflowY="auto"
+      overflowX="clip"
+    >
       <Header selected={selectedSection} onGoToSection={handleGoToSection} />
       <LinksBar />
       <Box paddingTop="56px" height="100%" width="100%">
@@ -118,12 +128,58 @@ const Layout = () => {
         </Flex>
 
         <Flex ref={experienceRef} as="section" {...commonProps}>
-          Experiencias
+          <Experiences />
         </Flex>
 
-        <Flex ref={projectsRef} as="section" {...commonProps}>
-          Projetos
+        <Flex
+          ref={projectsRef}
+          as="section"
+          {...commonProps}
+          position="relative"
+        >
+          <Projects />
+          <Player
+            autoplay
+            loop
+            src={animatedBackground}
+            speed={0.6}
+            style={{
+              width: "100%",
+              bottom: "0px",
+              left: "0px",
+              position: "absolute",
+              zIndex: -1,
+              opacity: 0.16,
+            }}
+          />
         </Flex>
+      </Box>
+
+      <Box
+        visibility={aboutEntry?.isIntersecting ? "hidden" : "visible"}
+        opacity={aboutEntry?.isIntersecting ? 0 : 1}
+        transition="opacity ease-in-out 240ms"
+        position="fixed"
+        bottom="0px"
+        right="0px"
+        padding="0.72rem"
+      >
+        <IconButton
+          aria-label="go-to-top"
+          variant="link"
+          color="gray.900"
+          size="sm"
+          height="34px"
+          width="34px"
+          icon={<MdIcon name="MdKeyboardArrowUp" size="md" />}
+          bgColor="green.500"
+          borderRadius="full"
+          _hover={{}}
+          _active={{
+            opacity: 0.7,
+          }}
+          onClick={() => handleGoToSection("about")}
+        />
       </Box>
     </Box>
   );
