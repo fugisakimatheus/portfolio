@@ -171,8 +171,8 @@ const Skills = () => {
         borderRadius="6px"
         bgColor="rgba(255, 255, 255, 0.03)"
         border="1px solid rgba(255, 255, 255, 0.05)"
-        boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
-        backdropFilter="blur(5px)"
+        boxShadow="0 4px 26px rgba(0, 0, 0, 0.1)"
+        backdropFilter="blur(6px)"
       >
         {sortedSkills.map(({ icon, color, label }) => (
           <Flex
