@@ -9,14 +9,13 @@ const About = () => {
 
   return (
     <Flex
-      marginTop={{ base: "2.5rem", sm: "2.5rem", md: "0px" }}
       width="100%"
       maxWidth="1120px"
       height="100%"
       align="center"
       justify={{
-        base: "flex-end",
-        sm: "flex-end",
+        base: "center",
+        sm: "center",
         md: "space-between",
       }}
       direction={{
@@ -24,7 +23,7 @@ const About = () => {
         sm: "column-reverse",
         md: "row",
       }}
-      marginX="2rem"
+      marginX={{ base: "1.4rem", sm: "1.4rem", md: "2rem" }}
     >
       <Flex
         direction="column"

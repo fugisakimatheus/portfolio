@@ -137,9 +137,9 @@ const Skills = () => {
       height="100%"
       align="center"
       justify="center"
-      marginX="2rem"
       direction="column"
       position="relative"
+      marginX={{ base: "1.4rem", sm: "1.4rem", md: "2rem" }}
     >
       <Text
         color="green.400"
