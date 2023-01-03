@@ -132,7 +132,6 @@ const Skills = () => {
 
   return (
     <Flex
-      width="100%"
       maxWidth="1120px"
       height="100%"
       align="center"
@@ -150,31 +149,18 @@ const Skills = () => {
       >
         {t("skills:title")}
       </Text>
-      <Player
-        autoplay
-        loop
-        src={animatedBackground}
-        speed={0.25}
-        style={{
-          height: size,
-          width: size,
-          top: "0px",
-          left: "0px",
-          position: "absolute",
-          zIndex: -1,
-          opacity: 0.1,
-        }}
-      />
       <SimpleGrid
         columns={{ base: 2, sm: 2, md: 3 }}
-        rowGap={{ base: "0.6rem", sm: "1.5rem", md: "1.5rem" }}
-        columnGap={{ base: "2rem", sm: "2rem", md: "4rem" }}
+        rowGap={{ base: "1rem", sm: "1.5rem", md: "1.5rem" }}
+        columnGap={{ base: "2.2rem", sm: "2.2rem", md: "4rem" }}
         padding={{ base: "1rem", sm: "1rem", md: "3rem" }}
         borderRadius="6px"
         bgColor="rgba(255, 255, 255, 0.03)"
         border="1px solid rgba(255, 255, 255, 0.05)"
         boxShadow="0 4px 26px rgba(0, 0, 0, 0.1)"
         backdropFilter="blur(6px)"
+        width="100%"
+        maxWidth="860px"
       >
         {sortedSkills.map(({ icon, color, label }) => (
           <Flex
@@ -195,6 +181,21 @@ const Skills = () => {
           </Flex>
         ))}
       </SimpleGrid>
+      <Player
+        autoplay
+        loop
+        src={animatedBackground}
+        speed={0.25}
+        style={{
+          height: size,
+          width: size,
+          top: "0px",
+          left: "0px",
+          position: "absolute",
+          zIndex: -1,
+          opacity: 0.1,
+        }}
+      />
     </Flex>
   );
 };

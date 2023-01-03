@@ -36,10 +36,31 @@ export const skills = {
   figma: "Figma",
 };
 
-export const projects = {
-  title: "Projetos",
-};
-
 export const experiences = {
   title: "Experiências",
+  objective: {
+    name: "Objective Solutions",
+    description: "",
+    location: "Maringá - PR (remoto)",
+    startDate: "ago de 2021",
+    endDate: "o momento",
+  },
+  grandchef: {
+    name: "GrandChef",
+    description: "",
+    location: "Paranavaí - PR (presencial)",
+    startDate: "jul de 2019",
+    endDate: "jul de 2021",
+  },
+  resenhe: {
+    name: "Resenhe",
+    description: "",
+    location: "Paranavaí - PR (presencial)",
+    startDate: "mar de 2018",
+    endDate: "jul de 2019",
+  },
+};
+
+export const projects = {
+  title: "Projetos",
 };

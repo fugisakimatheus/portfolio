@@ -188,7 +188,10 @@ const Layout = () => {
           icon={<MdIcon name="MdKeyboardArrowUp" size="md" />}
           bgColor="green.500"
           borderRadius="full"
-          _hover={{}}
+          _hover={{
+            color: "gray.200",
+            bgColor: "green.600",
+          }}
           _active={{
             opacity: 0.7,
           }}

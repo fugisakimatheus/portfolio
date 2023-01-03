@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fugisaki/design-system": "https://github.com/fugisakimatheus/design-system#v1.0.2",
+    "@fugisaki/design-system": "https://github.com/fugisakimatheus/design-system#v1.0.3",
     "@lottiefiles/react-lottie-player": "^3.5.0",
     "animejs": "^3.2.1",
     "i18next": "^22.4.6",

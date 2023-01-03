@@ -2248,9 +2248,9 @@
   dependencies:
     "@floating-ui/core" "^1.0.5"
 
-"@fugisaki/design-system@https://github.com/fugisakimatheus/design-system#v1.0.2":
+"@fugisaki/design-system@https://github.com/fugisakimatheus/design-system#v1.0.3":
   version "1.0.0"
-  resolved "https://github.com/fugisakimatheus/design-system#2fab265ac7a1bcc541cf49223069caa185eb8690"
+  resolved "https://github.com/fugisakimatheus/design-system#bfd9c17ec6c4a9bfa7b1935b749668a6d2f8980c"
   dependencies:
     "@chakra-ui/react" "^2.4.4"
     "@emotion/react" "^11.0.0"
