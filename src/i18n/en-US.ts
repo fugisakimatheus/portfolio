@@ -15,6 +15,10 @@ export const about = {
     "I've been working with Javascript / Typescript for 5 years. I am enthusiastic about new technologies.",
 };
 
+export const linksBar = {
+  curriculum: "Curriculum",
+};
+
 export const skills = {
   title: "Skills",
   typescript: "Typescript",
