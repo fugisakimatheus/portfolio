@@ -34,6 +34,28 @@ const Projects = () => {
       >
         {t("projects:title")}
       </Text>
+
+      <Flex
+        border="1px solid rgba(255, 255, 255, 0.05)"
+        boxShadow="0 4px 26px rgba(0, 0, 0, 0.1)"
+        bgColor="rgba(255, 255, 255, 0.03)"
+        backdropFilter="blur(6px)"
+        paddingY={{ base: "1.2rem", sm: "1.2rem", md: "1.5rem" }}
+        paddingX={{ base: "1.2rem", sm: "1.2rem", md: "2.5rem" }}
+        borderRadius="6px"
+        width="100%"
+        maxWidth="860px"
+        align="center"
+        justify="center"
+        minHeight={{ base: "520px", sm: "520px", md: "350px" }}
+      >
+        <Text
+          fontWeight="medium"
+          fontSize={{ base: "1rem", sm: "1rem", md: "1.2rem" }}
+        >
+          {t("projects:building")}
+        </Text>
+      </Flex>
     </Flex>
   );
 };

@@ -40,21 +40,24 @@ export const experiences = {
   title: "Experiências",
   objective: {
     name: "Objective Solutions",
-    description: "",
+    description:
+      "Desenvolvimento front end com React.js, Next.js e criação de design-system. Como dev sênior além das minhas atividades de desenvolvedor, auxilio desenvolvedores júnior e pleno com dúvidas técnicas e de arquitetura de software.",
     location: "Maringá - PR (remoto)",
     startDate: "ago de 2021",
     endDate: "o momento",
   },
   grandchef: {
     name: "GrandChef",
-    description: "",
+    description:
+      "Desenvolvimento Front-end com Vue.js / React.js e Electron utilizando Javascript / Typescript e prototipação e design de funcionalidades utilizando Figma.",
     location: "Paranavaí - PR (presencial)",
     startDate: "jul de 2019",
     endDate: "jul de 2021",
   },
   resenhe: {
     name: "Resenhe",
-    description: "",
+    description:
+      "Desenvolvimento de aplicativo em React Native e de API Rest utilizando Node.js Express.js e MongoDB.",
     location: "Paranavaí - PR (presencial)",
     startDate: "mar de 2018",
     endDate: "jul de 2019",
@@ -63,4 +66,5 @@ export const experiences = {
 
 export const projects = {
   title: "Projetos",
+  building: "Em construção...",
 };

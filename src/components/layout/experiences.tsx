@@ -27,13 +27,17 @@ const experiences: Experience[] = [
     startDate: "experiences:objective:startDate",
     tags: [
       "react",
-      "react-native",
+      "react native",
       "typescript",
       "redux",
-      "redux-saga",
+      "redux saga",
       "indexedDB",
-      "design-system",
+      "realmDB",
+      "design system",
       "clean architecture",
+      "jest",
+      "cypress",
+      "styled components",
     ],
   },
   {
@@ -51,6 +55,7 @@ const experiences: Experience[] = [
       "typescript",
       "less",
       "figma",
+      "graphQL",
     ],
   },
   {
@@ -123,11 +128,12 @@ const Experiences = () => {
         boxShadow="0 4px 26px rgba(0, 0, 0, 0.1)"
         bgColor="rgba(255, 255, 255, 0.03)"
         backdropFilter="blur(6px)"
-        padding={{ base: "1rem", sm: "1rem", md: "3rem" }}
+        paddingY={{ base: "1.2rem", sm: "1.2rem", md: "1.5rem" }}
+        paddingX={{ base: "1.2rem", sm: "1.2rem", md: "2.5rem" }}
         borderRadius="6px"
         width="100%"
         maxWidth="860px"
-        minHeight="56%"
+        minHeight={{ base: "520px", sm: "520px", md: "350px" }}
         position="relative"
       >
         <Box position="absolute" top="46%" left="-18px">
@@ -139,27 +145,6 @@ const Experiences = () => {
           />
         </Box>
 
-        <Flex
-          direction="column"
-          height="100%"
-          width="100%"
-          align="center"
-          justify="center"
-        >
-          <Flex key={currentExperience.name} color="gray.200">
-            <Text>{t(currentExperience.name)}</Text>
-            <Text>{t(currentExperience.startDate)}</Text>
-            <Text>{t(currentExperience.endDate)}</Text>
-            <Text>{t(currentExperience.location)}</Text>
-            <Text>{t(currentExperience.description)}</Text>
-            <Flex>
-              {currentExperience.tags.map((tag) => (
-                <Text key={tag}>{t(tag)}</Text>
-              ))}
-            </Flex>
-          </Flex>
-        </Flex>
-
         <Box position="absolute" top="46%" right="-18px">
           <IconButton
             {...buttonStyles}
@@ -168,6 +153,76 @@ const Experiences = () => {
             onClick={() => handleChangePage(1)}
           />
         </Box>
+
+        <Flex
+          direction="column"
+          height="100%"
+          width="100%"
+          color="gray.200"
+          textAlign="justify"
+          px={{ base: "3", sm: "3", md: "0" }}
+        >
+          <Text
+            width="100%"
+            fontWeight="medium"
+            color="gray.200"
+            fontSize="3xl"
+            mb="0"
+          >
+            {t(currentExperience.name)}
+          </Text>
+          <Flex fontSize="sm" fontWeight="semibold" color="gray.300">
+            <Text mr="1">{t(currentExperience.startDate)} -</Text>
+            <Text>{t(currentExperience.endDate)}</Text>
+          </Flex>
+          <Text mb="2" fontSize="sm" fontWeight="semibold" color="gray.300">
+            {t(currentExperience.location)}
+          </Text>
+          <Text width="100%" mb="3">
+            {t(currentExperience.description)}
+          </Text>
+
+          <Flex width="100%" flexWrap="wrap" marginBottom="40px">
+            {currentExperience.tags.map((tag) => (
+              <Text
+                key={tag}
+                py="1"
+                px="2"
+                mr="2"
+                mb="2"
+                bgColor="rgba(72, 187, 120, 0.16)"
+                borderRadius="md"
+                minWidth="max-content"
+                border="1px solid"
+                color="gray.200"
+                borderColor="green.600"
+              >
+                {t(tag)}
+              </Text>
+            ))}
+          </Flex>
+
+          <Flex
+            position="absolute"
+            bottom="20px"
+            align="center"
+            left="50%"
+            transform="translate(-50%, 50%)"
+          >
+            {experiences.map((experience, index) => (
+              <Flex
+                key={experience.name}
+                bgColor={currentPage === index ? "green.400" : "gray.200"}
+                borderRadius="full"
+                h="12px"
+                w="12px"
+                mr={index < experiences.length - 1 ? "2" : "0"}
+                cursor="pointer"
+                onClick={() => setCurrentPage(index)}
+              />
+            ))}
+          </Flex>
+        </Flex>
       </Flex>
     </Flex>
   );
