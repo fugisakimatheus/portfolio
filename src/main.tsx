@@ -10,7 +10,7 @@ const App = () => {
       <Global
         styles={`
           html, body {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth !important;
           }
 
           body {
