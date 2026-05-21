@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "career": "Carreira",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "contact": "Contato"
+  },
+  "cta": {
+    "primary": "Vamos conversar",
+    "viewProjects": "Ver projetos"
+  },
+  "sections": {
+    "about": "Sobre",
+    "career": "Carreira",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "contact": "Contato"
+  },
+  "career": {
+    "job": "CLT",
+    "freelance": "Freelance",
+    "internship": "Estágio"
+  },
+  "projects": {
+    "live": "Ver ao vivo",
+    "repo": "Código"
+  },
+  "contact": {
+    "heading": "Vamos construir algo juntos?",
+    "subheading": "Disponível para freelas e projetos front-end."
+  },
+  "footer": {
+    "built": "Feito com React + Vite"
+  }
+}

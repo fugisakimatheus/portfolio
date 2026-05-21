@@ -1,0 +1,12 @@
+:root {
+  --bg-base: #0a0a0f;
+  --bg-elevated: #12121a;
+  --surface-glass: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --accent: #6366f1;
+  --accent-glow: #818cf8;
+  --accent-secondary: #22d3ee;
+  --nav-height: 4rem;
+}

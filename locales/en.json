@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "About",
+    "career": "Career",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "cta": {
+    "primary": "Let's talk",
+    "viewProjects": "View projects"
+  },
+  "sections": {
+    "about": "About",
+    "career": "Career",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "career": {
+    "job": "Full-time",
+    "freelance": "Freelance",
+    "internship": "Internship"
+  },
+  "projects": {
+    "live": "Live demo",
+    "repo": "Source"
+  },
+  "contact": {
+    "heading": "Let's build something together",
+    "subheading": "Available for freelance and front-end projects."
+  },
+  "footer": {
+    "built": "Built with React + Vite"
+  }
+}
