@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { CustomCursor } from './components/layout/CustomCursor'
 import { Footer } from './components/layout/Footer'
 import { Nav } from './components/layout/Nav'
@@ -13,6 +14,7 @@ import { Skills } from './sections/Skills'
 export default function App() {
   return (
     <LenisProvider>
+      <Analytics />
       <DocumentHead />
       <ScrollProgress />
       <CustomCursor />
