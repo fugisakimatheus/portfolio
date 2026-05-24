@@ -11,7 +11,7 @@ export const siteContent: SiteContent = {
       pt: 'Desenvolvedor front-end sênior. Construo interfaces modernas com React, Next.js, Tailwind CSS e TypeScript.',
       en: 'Senior front-end developer. I build modern interfaces with React, Next.js, Tailwind CSS and TypeScript.',
     },
-    avatar: '/public/profile.jpg',
+    avatar: '/profile/avatar.jpg',
     socials: [
       { platform: 'github', url: 'https://github.com/fugisakimatheus' },
       { platform: 'linkedin', url: 'https://linkedin.com/in/matheus-fugisaki' },
