@@ -81,3 +81,51 @@ body {
     animation: none;
   }
 }
+
+/* Custom cursor (desktop fine pointer only — see CustomCursor.tsx) */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.custom-cursor-dot {
+  z-index: 10000;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--accent-glow);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 55%, transparent);
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-ring {
+  z-index: 9999;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--accent-glow) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.custom-cursor-ring--hover {
+  border-color: color-mix(in srgb, var(--accent-glow) 65%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.custom-cursor-ring--press {
+  border-color: color-mix(in srgb, var(--accent-secondary) 50%, transparent);
+  background: color-mix(in srgb, var(--accent-secondary) 10%, transparent);
+}

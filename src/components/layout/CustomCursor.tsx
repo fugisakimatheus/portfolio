@@ -1,75 +1,156 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+
+const INTERACTIVE_SELECTOR =
+  'a, button, [role="button"], input, textarea, select, summary, label[for], [data-cursor="pointer"]'
+
+const DOT_LERP = 0.45
+const RING_LERP = 0.12
+const SIZE_LERP = 0.16
+const RING_REST = 32
+const RING_HOVER = 52
+const RING_PRESS = 22
 
 export function CustomCursor() {
   const reduced = useReducedMotion()
-  const [pos, setPos] = useState({ x: 0, y: 0 })
-  const [follower, setFollower] = useState({ x: 0, y: 0 })
-  const [hovering, setHovering] = useState(false)
-  const [coarsePointer] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+  const coarsePointer = useRef(
+    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
   )
 
-  useEffect(() => {
-    if (reduced || coarsePointer) return
+  const dotRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
 
-    const onMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', onMove)
+  const target = useRef({ x: 0, y: 0 })
+  const dot = useRef({ x: 0, y: 0 })
+  const ring = useRef({ x: 0, y: 0 })
+  const ringSize = useRef(RING_REST)
+  const hovering = useRef(false)
+  const pressing = useRef(false)
+  const visible = useRef(false)
+  const ringHoverClass = useRef(false)
+
+  useEffect(() => {
+    if (reduced || coarsePointer.current) return
+
+    const root = document.documentElement
+    root.classList.add('custom-cursor')
+
+    const goalRingSize = () => {
+      if (pressing.current) return RING_PRESS
+      if (hovering.current) return RING_HOVER
+      return RING_REST
+    }
+
+    const syncRingState = () => {
+      const ringEl = ringRef.current
+      if (!ringEl) return
+
+      const isHover = hovering.current
+      if (isHover !== ringHoverClass.current) {
+        ringHoverClass.current = isHover
+        ringEl.classList.toggle('custom-cursor-ring--hover', isHover)
+      }
+      ringEl.classList.toggle('custom-cursor-ring--press', pressing.current)
+    }
+
+    const loop = () => {
+      const { x: tx, y: ty } = target.current
+
+      dot.current.x += (tx - dot.current.x) * DOT_LERP
+      dot.current.y += (ty - dot.current.y) * DOT_LERP
+      ring.current.x += (tx - ring.current.x) * RING_LERP
+      ring.current.y += (ty - ring.current.y) * RING_LERP
+
+      const goal = goalRingSize()
+      ringSize.current += (goal - ringSize.current) * SIZE_LERP
+
+      const opacity = visible.current ? '1' : '0'
+      const dotScale = pressing.current ? 0.85 : 1
+
+      const dotEl = dotRef.current
+      if (dotEl) {
+        dotEl.style.opacity = opacity
+        dotEl.style.transform = `translate3d(${dot.current.x}px, ${dot.current.y}px, 0) translate(-50%, -50%) scale(${dotScale})`
+      }
+
+      const ringEl = ringRef.current
+      if (ringEl) {
+        const size = ringSize.current
+        ringEl.style.opacity = opacity
+        ringEl.style.width = `${size}px`
+        ringEl.style.height = `${size}px`
+        ringEl.style.transform = `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%)`
+      }
+
+      syncRingState()
+    }
 
     let raf = 0
-    const loop = () => {
-      setFollower((f) => ({
-        x: f.x + (pos.x - f.x) * 0.15,
-        y: f.y + (pos.y - f.y) * 0.15,
-      }))
-      raf = requestAnimationFrame(loop)
+    const tick = () => {
+      loop()
+      raf = requestAnimationFrame(tick)
     }
-    raf = requestAnimationFrame(loop)
+    raf = requestAnimationFrame(tick)
 
-    const interactives = document.querySelectorAll('a, button')
-    const onEnter = () => setHovering(true)
-    const onLeave = () => setHovering(false)
-    interactives.forEach((el) => {
-      el.addEventListener('mouseenter', onEnter)
-      el.addEventListener('mouseleave', onLeave)
-    })
+    const onMove = (e: MouseEvent) => {
+      target.current = { x: e.clientX, y: e.clientY }
+
+      if (!visible.current) {
+        visible.current = true
+        dot.current = { x: e.clientX, y: e.clientY }
+        ring.current = { x: e.clientX, y: e.clientY }
+      }
+    }
+
+    const onOver = (e: MouseEvent) => {
+      const el = e.target
+      if (!(el instanceof Element)) return
+      hovering.current = Boolean(el.closest(INTERACTIVE_SELECTOR))
+    }
+
+    const onDown = () => {
+      pressing.current = true
+    }
+
+    const onUp = () => {
+      pressing.current = false
+    }
+
+    const onWindowLeave = () => {
+      visible.current = false
+    }
+
+    const onWindowEnter = () => {
+      if (target.current.x || target.current.y) visible.current = true
+    }
+
+    window.addEventListener('mousemove', onMove, { passive: true })
+    window.addEventListener('mouseover', onOver, { passive: true })
+    window.addEventListener('mousedown', onDown)
+    window.addEventListener('mouseup', onUp)
+    document.documentElement.addEventListener('mouseleave', onWindowLeave)
+    document.documentElement.addEventListener('mouseenter', onWindowEnter)
 
     return () => {
-      window.removeEventListener('mousemove', onMove)
       cancelAnimationFrame(raf)
-      interactives.forEach((el) => {
-        el.removeEventListener('mouseenter', onEnter)
-        el.removeEventListener('mouseleave', onLeave)
-      })
+      root.classList.remove('custom-cursor')
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseover', onOver)
+      window.removeEventListener('mousedown', onDown)
+      window.removeEventListener('mouseup', onUp)
+      document.documentElement.removeEventListener('mouseleave', onWindowLeave)
+      document.documentElement.removeEventListener('mouseenter', onWindowEnter)
     }
-  }, [reduced, coarsePointer, pos.x, pos.y])
+  }, [reduced])
 
-  if (reduced || coarsePointer) {
+  if (reduced || coarsePointer.current) {
     return null
   }
 
-  const size = hovering ? 40 : 8
-
   return (
     <>
-      <div
-        className="pointer-events-none fixed z-100 rounded-full bg-white mix-blend-difference"
-        style={{
-          width: 8,
-          height: 8,
-          left: pos.x - 4,
-          top: pos.y - 4,
-        }}
-      />
-      <div
-        className="pointer-events-none fixed z-99 rounded-full border border-white/30 transition-[width,height] duration-200"
-        style={{
-          width: size,
-          height: size,
-          left: follower.x - size / 2,
-          top: follower.y - size / 2,
-        }}
-      />
+      <div ref={dotRef} className="custom-cursor-dot" aria-hidden />
+      <div ref={ringRef} className="custom-cursor-ring" aria-hidden />
     </>
   )
 }

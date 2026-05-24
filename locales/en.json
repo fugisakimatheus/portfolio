@@ -28,8 +28,12 @@
   },
   "career": {
     "job": "Full-time",
+    "legal": "Legal entity",
     "freelance": "Freelance",
-    "internship": "Internship"
+    "internship": "Internship",
+    "part-time": "Part-time",
+    "showMore": "Show more",
+    "showLess": "Show less"
   },
   "projects": {
     "live": "Live demo",
@@ -38,10 +42,15 @@
     "more": "More projects"
   },
   "skills": {
+    "subtitle": "Technologies I use daily to build interfaces, digital products, and keep code quality high.",
+    "total": "{{count}} technologies",
     "frontend": "Front-end",
     "tools": "Tools",
     "testing": "Testing",
     "other": "Other",
+    "frontendDesc": "Interfaces, SPAs, and design systems.",
+    "toolsDesc": "Build tooling, runtime, and dev workflow.",
+    "testingDesc": "Unit, integration, and E2E testing.",
     "item": "technology",
     "items": "technologies"
   },
@@ -59,6 +68,7 @@
     "copied": "Copied!"
   },
   "footer": {
-    "built": "Built with React + Vite"
+    "built": "Built with React + Vite",
+    "socials": "Social links"
   }
 }

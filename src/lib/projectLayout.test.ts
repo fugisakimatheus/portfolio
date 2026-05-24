@@ -36,12 +36,15 @@ describe('resolveBentoLayout', () => {
     expect(slots['currency-converter']).toBe('hero')
   })
 
-  it('falls back to first project as hero when none are wide', () => {
+  it('assigns the most portrait screenshot to the hero slot', () => {
     const projects = [mockProject('a', 1.1), mockProject('b', 1.05), mockProject('c', 1.0)]
 
-    const placements = resolveBentoLayout(projects)
-    expect(placements[0].slot).toBe('hero')
-    expect(placements[0].project.id).toBe('a')
+    const slots = Object.fromEntries(
+      resolveBentoLayout(projects).map((p) => [p.project.id, p.slot]),
+    )
+
+    expect(slots.c).toBe('hero')
+    expect(slots.a).toBe('wide')
   })
 })
 

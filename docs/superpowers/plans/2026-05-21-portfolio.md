@@ -315,7 +315,7 @@ export type Locale = 'pt' | 'en'
 
 export type LocalizedString = { pt: string; en: string }
 
-export type CareerType = 'job' | 'freelance' | 'internship'
+export type CareerType = 'job' | 'legal' | 'freelance' | 'internship' | 'part-time'
 
 export type CareerEntry = {
   id: string

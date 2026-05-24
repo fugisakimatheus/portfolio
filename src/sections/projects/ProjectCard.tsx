@@ -54,11 +54,13 @@ function ProjectImageHeader({
   return (
     <div
       className={cn(
-        'relative w-full shrink-0 overflow-hidden',
-        isMobileFeatured && 'max-h-[min(52vh,28rem)]',
-        variant === 'standard' && 'max-h-36 min-h-0',
+        'relative w-full overflow-hidden',
+        isHero && 'min-h-48 flex-1',
+        !isHero && 'shrink-0',
+        isMobileFeatured && 'max-h-[min(52vh,28rem)] shrink-0',
+        variant === 'standard' && 'max-h-36 min-h-0 shrink-0',
       )}
-      style={{ aspectRatio: aspect }}
+      style={isHero ? undefined : { aspectRatio: aspect }}
     >
       <ProjectImage
         src={project.image}
@@ -68,6 +70,7 @@ function ProjectImageHeader({
         objectPosition={isWide ? 'top' : 'center'}
         className={cn(
           'h-full w-full',
+          isHero && 'absolute inset-0',
           !isMobileFeatured && 'transition duration-500 group-hover:scale-[1.03]',
         )}
       />

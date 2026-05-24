@@ -1,25 +1,22 @@
-import { Briefcase, Building2, GraduationCap } from 'lucide-react'
-import { useTranslation } from 'react-i18next'
+import { Briefcase, Building2, CalendarClock, GraduationCap, TimerReset } from 'lucide-react'
 import { AnimatedInView, AnimatedItem } from '../components/motion/AnimatedInView'
-import { GlassCard } from '../components/ui/GlassCard'
 import { IconBox } from '../components/ui/IconBox'
 import { SectionPage } from '../components/ui/SectionPage'
-import { Tag } from '../components/ui/Tag'
 import { siteContent } from '../content/site'
 import type { CareerType } from '../content/types'
 import { useLocale } from '../hooks/useLocale'
 import { cn } from '../lib/cn'
-import { getLocalized } from '../lib/localized'
-import { badgeType, surfaceCardHover } from '../lib/surface'
+import { CareerCard } from './career/CareerCard'
 
 const icons: Record<CareerType, typeof Briefcase> = {
   job: Briefcase,
-  freelance: Building2,
+  legal: Building2,
+  'part-time': TimerReset,
+  freelance: CalendarClock,
   internship: GraduationCap,
 }
 
 export function Career() {
-  const { t } = useTranslation()
   const locale = useLocale()
   const { career } = siteContent
 
@@ -43,7 +40,7 @@ export function Career() {
                 as="li"
                 className={cn(
                   'relative',
-                  'pl-14 md:grid md:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)] md:items-start md:gap-x-10 md:pl-0',
+                  'pl-14 md:grid md:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)] md:items-center md:gap-x-8 md:pl-0 lg:gap-x-10',
                 )}
               >
                 {!isLast && (
@@ -53,7 +50,7 @@ export function Career() {
                   />
                 )}
 
-                <div className="absolute left-0 top-0 z-10 md:relative md:col-start-2 md:row-start-1 md:flex md:justify-center md:pt-2">
+                <div className="absolute left-0 top-0 z-10 md:relative md:col-start-2 md:row-start-1 md:flex md:justify-center">
                   <IconBox className="rounded-full ring-4 ring-(--bg-base) bg-(--bg-elevated)">
                     <Icon className="h-4 w-4" />
                   </IconBox>
@@ -62,38 +59,10 @@ export function Career() {
                 <div
                   className={cn(
                     'min-w-0 md:row-start-1',
-                    isLeft ? 'md:col-start-1 md:pr-2' : 'md:col-start-3 md:pl-2',
+                    isLeft ? 'md:col-start-1 md:pr-1 lg:pr-2' : 'md:col-start-3 md:pl-1 lg:pl-2',
                   )}
                 >
-                  <GlassCard className={cn(surfaceCardHover, 'p-4 sm:p-5')}>
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="font-mono text-[11px] tracking-wider text-(--text-muted)">
-                        {getLocalized(entry.period, locale)}
-                      </p>
-                      <span className={badgeType}>{t(`career.${entry.type}`)}</span>
-                    </div>
-
-                    <h3 className="mt-3 font-display text-base font-semibold text-(--text-primary) sm:text-lg">
-                      {entry.company}
-                    </h3>
-                    <p className="mt-1 text-sm leading-snug text-(--text-muted)">
-                      {getLocalized(entry.role, locale)}
-                    </p>
-
-                    {entry.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-(--text-muted)">
-                        {getLocalized(entry.description, locale)}
-                      </p>
-                    )}
-
-                    {entry.technologies && (
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {entry.technologies.map((tech) => (
-                          <Tag key={tech}>{tech}</Tag>
-                        ))}
-                      </div>
-                    )}
-                  </GlassCard>
+                  <CareerCard entry={entry} locale={locale} />
                 </div>
               </AnimatedItem>
             )

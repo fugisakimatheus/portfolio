@@ -105,7 +105,7 @@ type CareerEntry = {
   period: LocalizedString
   description?: LocalizedString
   technologies?: string[]
-  type: 'job' | 'freelance' | 'internship'
+  type: 'job' | 'legal' | 'freelance' | 'internship' | 'part-time'
 }
 
 type LocalizedString = { pt: string; en: string }

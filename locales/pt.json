@@ -28,8 +28,12 @@
   },
   "career": {
     "job": "CLT",
+    "legal": "PJ",
     "freelance": "Freelance",
-    "internship": "Estágio"
+    "internship": "Estágio",
+    "part-time": "Meio período",
+    "showMore": "Ver mais",
+    "showLess": "Ver menos"
   },
   "projects": {
     "live": "Ver ao vivo",
@@ -38,10 +42,15 @@
     "more": "Mais projetos"
   },
   "skills": {
+    "subtitle": "Stack que uso no dia a dia para construir interfaces, produtos digitais e garantir qualidade no código.",
+    "total": "{{count}} tecnologias",
     "frontend": "Front-end",
     "tools": "Ferramentas",
     "testing": "Testes",
     "other": "Outros",
+    "frontendDesc": "Interfaces, SPAs e design systems.",
+    "toolsDesc": "Build, runtime e fluxo de desenvolvimento.",
+    "testingDesc": "Testes unitários, integração e E2E.",
     "item": "tecnologia",
     "items": "tecnologias"
   },
@@ -59,6 +68,7 @@
     "copied": "Copiado!"
   },
   "footer": {
-    "built": "Feito com React + Vite"
+    "built": "Feito com React + Vite",
+    "socials": "Redes sociais"
   }
 }
