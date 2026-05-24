@@ -1,22 +1,50 @@
 import { cn } from '../../lib/cn'
 
-type Props = React.ComponentProps<'a'> & {
-  variant?: 'primary' | 'ghost'
+const buttonStyles = {
+  base: 'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition duration-200 w-full sm:w-auto',
+  primary: 'bg-(--text-primary) text-(--bg-base) hover:bg-zinc-200 active:scale-[0.98]',
+  ghost:
+    'border border-(--border-subtle) bg-transparent text-(--text-primary) hover:border-(--text-muted) hover:bg-white/4 active:scale-[0.98]',
+} as const
+
+type Variant = 'primary' | 'ghost'
+
+type SharedProps = {
+  variant?: Variant
+  className?: string
+  children: React.ReactNode
 }
 
-export function Button({ variant = 'primary', className, children, ...props }: Props) {
+type AnchorButton = SharedProps & Omit<React.ComponentProps<'a'>, keyof SharedProps> & { as?: 'a' }
+
+type NativeButton = SharedProps &
+  Omit<React.ComponentProps<'button'>, keyof SharedProps> & { as: 'button' }
+
+export type ButtonProps = AnchorButton | NativeButton
+
+function buttonClassName(variant: Variant, className?: string) {
+  return cn(
+    buttonStyles.base,
+    variant === 'primary' ? buttonStyles.primary : buttonStyles.ghost,
+    className,
+  )
+}
+
+export function Button(props: ButtonProps) {
+  const { variant = 'primary', className, children, as = 'a', ...rest } = props
+
+  if (as === 'button') {
+    const { as: _, ...buttonRest } = rest as NativeButton
+    return (
+      <button type="button" className={buttonClassName(variant, className)} {...buttonRest}>
+        {children}
+      </button>
+    )
+  }
+
+  const { as: _, ...anchorRest } = rest as AnchorButton
   return (
-    <a
-      className={cn(
-        'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition',
-        variant === 'primary' &&
-          'bg-[var(--accent)] text-white hover:shadow-[0_0_24px_var(--accent-glow)]',
-        variant === 'ghost' &&
-          'border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-primary)] backdrop-blur-xl hover:border-[var(--accent)]',
-        className,
-      )}
-      {...props}
-    >
+    <a className={buttonClassName(variant, className)} {...anchorRest}>
       {children}
     </a>
   )

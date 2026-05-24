@@ -1,4 +1,12 @@
 import { cn } from '../../lib/cn'
+import {
+  layoutInner,
+  layoutOuter,
+  scrollMtSection,
+  sectionContentMt,
+  sectionPy,
+  sectionTitle,
+} from '../../lib/layout'
 
 type Props = {
   id: string
@@ -9,14 +17,17 @@ type Props = {
 
 export function Section({ id, title, children, className }: Props) {
   return (
-    <section
-      id={id}
-      className={cn('scroll-mt-20 px-6 py-24 md:px-12 lg:px-24', className)}
-    >
-      <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
-        {title}
-      </h2>
-      <div className="mt-12">{children}</div>
+    <section id={id} className={cn(scrollMtSection, sectionPy, layoutOuter, className)}>
+      <div className={layoutInner}>
+        <div>
+          <h2 className={sectionTitle}>{title}</h2>
+          <div
+            aria-hidden
+            className="mt-4 h-px w-10 bg-linear-to-r from-(--text-muted)/50 to-transparent sm:w-14"
+          />
+        </div>
+        <div className={sectionContentMt}>{children}</div>
+      </div>
     </section>
   )
 }

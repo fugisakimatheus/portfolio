@@ -4,11 +4,20 @@
     "career": "Career",
     "projects": "Projects",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Navigation menu",
+    "menuSubtitle": "Navigation",
+    "language": "Language",
+    "headerContact": "Contact"
   },
   "cta": {
     "primary": "Let's talk",
     "viewProjects": "View projects"
+  },
+  "hero": {
+    "available": "Open to freelances"
   },
   "sections": {
     "about": "About",
@@ -24,11 +33,30 @@
   },
   "projects": {
     "live": "Live demo",
-    "repo": "Source"
+    "repo": "Source",
+    "featured": "Featured",
+    "more": "More projects"
+  },
+  "skills": {
+    "frontend": "Front-end",
+    "tools": "Tools",
+    "testing": "Testing",
+    "other": "Other",
+    "item": "technology",
+    "items": "technologies"
   },
   "contact": {
     "heading": "Let's build something together",
-    "subheading": "Available for freelance and front-end projects."
+    "subheading": "Open to freelance and front-end work — interfaces, SPAs, and digital products.",
+    "availability": "Available for freelance",
+    "response": "I usually reply within 48 hours",
+    "channels": "Channels",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "copyEmail": "Copy email",
+    "copied": "Copied!"
   },
   "footer": {
     "built": "Built with React + Vite"

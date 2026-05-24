@@ -25,7 +25,7 @@
 | Site | GitHub API `blog` | `https://matheusfugisaki.vercel.app` |
 | GitHub | Profile | `https://github.com/fugisakimatheus` |
 | LinkedIn | Profile README | `https://linkedin.com/in/matheus-fugisaki` |
-| Email | Not public on GitHub | `matheusgfmacieira@gmail.com` |
+| Email | Not public on GitHub | `matheusgfmaciel@gmail.com` |
 
 **Projects (from pinned repos + API descriptions):** use repo `description` when present; expand PT/EN copy in `site.ts`; **MOCK** `liveUrl` only where `homepage` exists on API (most repos have `null`).
 
@@ -397,8 +397,8 @@ export const siteContent: SiteContent = {
       en: 'Senior Front-end Developer',
     },
     bio: {
-      pt: 'Desenvolvedor front-end sênior na Nexgy. Construo interfaces modernas com React, TypeScript e Next.js. Disponível para projetos freelance.',
-      en: 'Senior front-end developer at Nexgy. I build modern interfaces with React, TypeScript, and Next.js. Available for freelance work.',
+      pt: 'Desenvolvedor front-end sênior na Nexgy. Construo interfaces modernas com React, TypeScript e Next.js.',
+      en: 'Senior front-end developer at Nexgy. I build modern interfaces with React, TypeScript, and Next.js.',
     },
     avatar: 'https://avatars.githubusercontent.com/u/77367287?v=4',
     socials: [

@@ -1,12 +1,27 @@
 :root {
-  --bg-base: #0a0a0f;
-  --bg-elevated: #12121a;
-  --surface-glass: rgba(255, 255, 255, 0.04);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --text-primary: #f4f4f5;
+  --bg-base: #09090b;
+  --bg-elevated: #111113;
+  --bg-nav: rgba(9, 9, 11, 0.72);
+  --bg-nav-scrolled: rgba(9, 9, 11, 0.88);
+  --bg-overlay: rgba(9, 9, 11, 0.85);
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --text-primary: #fafafa;
   --text-muted: #a1a1aa;
   --accent: #6366f1;
-  --accent-glow: #818cf8;
-  --accent-secondary: #22d3ee;
+  --accent-glow: #a5b4fc;
+  --accent-secondary: #67e8f9;
   --nav-height: 4rem;
+
+  /* Logo mark — derived from theme palette */
+  --logo-bg: var(--bg-elevated);
+  --logo-border: var(--border-subtle);
+  --logo-surface: var(--surface-glass);
+  --logo-bloom: color-mix(in srgb, var(--accent) 22%, transparent);
+  --logo-shadow: color-mix(in srgb, var(--accent) 28%, transparent);
+  --logo-mesh: color-mix(in srgb, var(--accent-glow) 16%, transparent);
+  --logo-shine: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  --logo-frame-start: color-mix(in srgb, var(--accent-glow) 45%, var(--logo-border));
+  --logo-frame-mid: color-mix(in srgb, var(--accent) 32%, var(--logo-border));
+  --logo-frame-end: color-mix(in srgb, var(--accent-secondary) 26%, var(--logo-border));
 }

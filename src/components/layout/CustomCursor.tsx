@@ -6,8 +6,8 @@ export function CustomCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const [follower, setFollower] = useState({ x: 0, y: 0 })
   const [hovering, setHovering] = useState(false)
-  const [coarsePointer] = useState(() =>
-    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+  const [coarsePointer] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
   )
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export function CustomCursor() {
   return (
     <>
       <div
-        className="pointer-events-none fixed z-[100] rounded-full bg-[var(--accent)] mix-blend-difference"
+        className="pointer-events-none fixed z-100 rounded-full bg-white mix-blend-difference"
         style={{
           width: 8,
           height: 8,
@@ -62,7 +62,7 @@ export function CustomCursor() {
         }}
       />
       <div
-        className="pointer-events-none fixed z-[99] rounded-full border border-[var(--accent-glow)] transition-[width,height] duration-200"
+        className="pointer-events-none fixed z-99 rounded-full border border-white/30 transition-[width,height] duration-200"
         style={{
           width: size,
           height: size,

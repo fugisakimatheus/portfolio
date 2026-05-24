@@ -19,6 +19,8 @@ export type ProjectEntry = {
   title: LocalizedString
   description: LocalizedString
   image: string
+  /** Width ÷ height — drives card image area and bento slot assignment. */
+  imageAspect?: number
   liveUrl?: string
   repoUrl?: string
   tags: string[]
@@ -27,7 +29,9 @@ export type ProjectEntry = {
 
 export type SkillEntry = {
   name: string
-  category: 'frontend' | 'tools' | 'other'
+  category: 'frontend' | 'tools' | 'testing' | 'other'
+  /** Slug for react-icons/si — see src/lib/skillIcons.ts */
+  icon: string
 }
 
 export type SocialLink = {
@@ -53,5 +57,6 @@ export type SiteContent = {
     whatsapp?: string
     github: string
     linkedin: string
+    instagram: string
   }
 }

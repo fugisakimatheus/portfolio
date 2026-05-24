@@ -7,22 +7,29 @@ export function useScrollSpy(): SectionId {
   const [active, setActive] = useState<SectionId>('about')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    )
+    if (elements.length === 0) return
 
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id)
-        },
-        { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting)
+        if (visible.length === 0) return
 
-    return () => observers.forEach((o) => o.disconnect())
+        const best = visible.reduce((current, next) =>
+          next.intersectionRatio > current.intersectionRatio ? next : current,
+        )
+        const id = best.target.id
+        if (SECTION_IDS.includes(id as SectionId)) {
+          setActive(id as SectionId)
+        }
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+    )
+
+    for (const el of elements) observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   return active

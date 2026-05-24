@@ -9,14 +9,17 @@
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll */
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-height: 100svh;
+  overflow-x: hidden;
   background: var(--bg-base);
   color: var(--text-primary);
   font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
 }
 
 #root {
@@ -25,4 +28,56 @@ body {
   margin: 0;
   text-align: left;
   min-height: 100svh;
+}
+
+@keyframes hero-float-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -28px) scale(1.08);
+  }
+}
+
+@keyframes hero-float-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-36px, 24px) scale(1.06);
+  }
+}
+
+@keyframes hero-float-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(24px, 32px) scale(1.04);
+  }
+}
+
+.hero-orb--a {
+  animation: hero-float-a 22s ease-in-out infinite;
+}
+
+.hero-orb--b {
+  animation: hero-float-b 26s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.hero-orb--c {
+  animation: hero-float-c 20s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb--a,
+  .hero-orb--b,
+  .hero-orb--c {
+    animation: none;
+  }
 }

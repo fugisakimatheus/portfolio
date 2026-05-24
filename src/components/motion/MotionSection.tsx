@@ -1,8 +1,8 @@
-import { motion, useReducedMotion as useFramerReduced, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { cn } from '../../lib/cn'
 import { fadeUp, reducedFade } from './variants'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 type Props = {
   children: React.ReactNode
@@ -14,9 +14,8 @@ export function MotionSection({ children, className, as = 'section' }: Props) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const reduced = useReducedMotion()
-  const framerReduced = useFramerReduced()
   const Component = as === 'section' ? motion.section : motion.div
-  const variants = reduced || framerReduced ? reducedFade : fadeUp
+  const variants = reduced ? reducedFade : fadeUp
 
   return (
     <Component

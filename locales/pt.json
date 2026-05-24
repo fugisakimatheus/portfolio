@@ -4,11 +4,20 @@
     "career": "Carreira",
     "projects": "Projetos",
     "skills": "Skills",
-    "contact": "Contato"
+    "contact": "Contato",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "menuLabel": "Menu de navegação",
+    "menuSubtitle": "Navegação",
+    "language": "Idioma",
+    "headerContact": "Contato"
   },
   "cta": {
     "primary": "Vamos conversar",
     "viewProjects": "Ver projetos"
+  },
+  "hero": {
+    "available": "Disponível para freelances"
   },
   "sections": {
     "about": "Sobre",
@@ -24,11 +33,30 @@
   },
   "projects": {
     "live": "Ver ao vivo",
-    "repo": "Código"
+    "repo": "Código",
+    "featured": "Destaque",
+    "more": "Mais projetos"
+  },
+  "skills": {
+    "frontend": "Front-end",
+    "tools": "Ferramentas",
+    "testing": "Testes",
+    "other": "Outros",
+    "item": "tecnologia",
+    "items": "tecnologias"
   },
   "contact": {
     "heading": "Vamos construir algo juntos?",
-    "subheading": "Disponível para freelas e projetos front-end."
+    "subheading": "Disponível para freelas e projetos front-end — interfaces, SPAs e produtos digitais.",
+    "availability": "Disponível para freelance",
+    "response": "Costumo responder em até 48h",
+    "channels": "Canais",
+    "email": "E-mail",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "copyEmail": "Copiar e-mail",
+    "copied": "Copiado!"
   },
   "footer": {
     "built": "Feito com React + Vite"
