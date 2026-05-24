@@ -151,12 +151,11 @@ function ProjectCardBody({
       <CardActions
         project={project}
         t={t}
-        stacked={isMobileFeatured}
         className={cn(
-          'mt-auto shrink-0 border-t border-(--border-subtle) pt-3',
+          'mt-auto shrink-0 border-t border-(--border-subtle)',
           isHero && 'mt-3',
           isStandard && 'mt-3',
-          isMobileFeatured && 'mt-4 pt-4',
+          isMobileFeatured && 'mt-4',
         )}
       />
     </div>

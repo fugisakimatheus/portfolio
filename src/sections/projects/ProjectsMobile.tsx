@@ -21,6 +21,7 @@ function MobileProjectRow({ project }: { project: ProjectEntry }) {
   const { t } = useTranslation()
   const { title, description, initials } = getProjectCopy(project, locale)
   const href = project.liveUrl ?? project.repoUrl
+  const linkLabel = project.liveUrl ? t('projects.live') : t('projects.repo')
   const staticAspect = project.imageAspect
   const loadedAspect = useImageAspectRatio(
     staticAspect ? undefined : project.image,
@@ -76,7 +77,7 @@ function MobileProjectRow({ project }: { project: ProjectEntry }) {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${title} — ${t('projects.repo')}`}
+        aria-label={`${title} — ${linkLabel}`}
         className={cn(cardClass, 'group pl-3.5')}
       >
         {inner}
