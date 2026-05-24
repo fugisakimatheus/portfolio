@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://fugisakimatheus.github.io/portfolio",
+  "homepage": "https://matheusfugisaki.site",
   "type": "module",
   "scripts": {
     "dev": "vite",
