@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { CustomCursor } from './components/layout/CustomCursor'
 import { Footer } from './components/layout/Footer'
 import { Nav } from './components/layout/Nav'
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <LenisProvider>
       <Analytics />
+      <SpeedInsights />
       <DocumentHead />
       <ScrollProgress />
       <CustomCursor />
